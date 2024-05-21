@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://bd4w1wfj1evf4"]
+
+[ext_resource type="Texture2D" uid="uid://cc561whsqpwv2" path="res://assets/tiles/3-drylands_tundra.png" id="1_xtjkq"]
+[ext_resource type="Texture2D" uid="uid://dkgdxfnes8k8m" path="res://assets/tiles/3-greenlands_tundra.png" id="2_ojvif"]
+[ext_resource type="Texture2D" uid="uid://dpmcpi2jl5nrn" path="res://assets/Tree-Assets.png" id="3_ilpju"]
+[ext_resource type="Script" path="res://scripts/TileMap_controller.gd" id="4_8x1r5"]
+[ext_resource type="PackedScene" uid="uid://b8emyytxt478w" path="res://scenes/player.tscn" id="5_b87hm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nd1vv"]
+texture = ExtResource("1_xtjkq")
+texture_region_size = Vector2i(238, 207)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_baeg8"]
+texture = ExtResource("2_ojvif")
+texture_region_size = Vector2i(238, 207)
+0:0/next_alternative_id = 4
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/1 = 1
+0:0/1/modulate = Color(0.741176, 0.176471, 1, 1)
+0:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/1/physics_layer_0/angular_velocity = 0.0
+0:0/2 = 2
+0:0/2/modulate = Color(0.603922, 0.529412, 0.933333, 1)
+0:0/2/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/2/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v37qg"]
+texture = ExtResource("3_ilpju")
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_sc182"]
+tile_shape = 3
+tile_size = Vector2i(200, 238)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_nd1vv")
+sources/1 = SubResource("TileSetAtlasSource_baeg8")
+sources/2 = SubResource("TileSetAtlasSource_v37qg")
+
+[node name="World" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(245, -9)
+tile_set = SubResource("TileSet_sc182")
+format = 2
+layer_0/tile_data = PackedInt32Array(1, 0, 1342177280, 2, 1, 1342177280, 3, 1, 1342177280, 65538, 1, 1342177280, 65537, 0, 1342177280, 196610, 1, 1342308352, 131074, 0, 1342177280, 131075, 1, 1342177280, 262147, 1, 1342177280, 327683, 1, 1342177280, 393220, 1, 1342177280, 327684, 1, 1342177280, 262148, 1, 1342177280, 196611, 1, 1342177280, 196612, 1, 1342177280, 196613, 1, 1342177280, 262149, 1, 1342177280, 131076, 1, 1342177280, 131077, 1, 1342177280, 65539, 1, 1342177280, 65540, 1, 1342177280, 4, 1, 1342177280, 196609, 0, 1342177280, 196608, 0, 1342177280, 262143, 0, 1342177280, 262146, 0, 1342177280, 262145, 0, 1342177280, 262144, 0, 1342177280, 327682, 0, 1342177280, 327681, 0, 1342177280, 327680, 0, 1342177280, 393219, 0, 1342177280, 393218, 0, 1342177280, 393217, 0, 1342177280, 131073, 0, 1342177280, 65536, 0, 1342177280, 131072, 0, 1342177280)
+script = ExtResource("4_8x1r5")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0)
+default_color = Color(0.811761, 0.247521, 0.382382, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Player" parent="." instance=ExtResource("5_b87hm")]
+position = Vector2(460, 268)

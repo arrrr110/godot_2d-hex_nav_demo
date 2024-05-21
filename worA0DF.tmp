@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://bd4w1wfj1evf4"]
+
+[ext_resource type="Texture2D" uid="uid://dkgdxfnes8k8m" path="res://3-greenlands_tundra.png" id="1_0opx8"]
+[ext_resource type="Texture2D" uid="uid://cc561whsqpwv2" path="res://3-drylands_tundra.png" id="2_84rcu"]
+[ext_resource type="Texture2D" uid="uid://dpmcpi2jl5nrn" path="res://Tree-Assets.png" id="3_x8qe5"]
+[ext_resource type="Script" path="res://TileMap_controller.gd" id="4_jfn5d"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nd1vv"]
+texture = ExtResource("2_84rcu")
+texture_region_size = Vector2i(238, 207)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_baeg8"]
+texture = ExtResource("1_0opx8")
+texture_region_size = Vector2i(238, 207)
+0:0/next_alternative_id = 3
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/1 = 1
+0:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/1/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v37qg"]
+texture = ExtResource("3_x8qe5")
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_sc182"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(238, 206)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_nd1vv")
+sources/1 = SubResource("TileSetAtlasSource_baeg8")
+sources/2 = SubResource("TileSetAtlasSource_v37qg")
+
+[node name="World" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(105, -97)
+tile_set = SubResource("TileSet_sc182")
+format = 2
+layer_0/tile_data = PackedInt32Array(65540, 0, 0, 65541, 0, 0, 65538, 0, 0, 65539, 0, 0, 131077, 0, 0, 196613, 0, 0, 262149, 1, 0, 262148, 1, 0, 196611, 1, 0, 131075, 0, 0, 196610, 1, 0, 131074, 0, 0, 65537, 0, 0, 65536, 0, 0, 131076, 0, 0, 196612, 0, 0, 131073, 1, 0, 131072, 1, 0, 196608, 1, 0, 196609, 1, 0, 262146, 1, 0, 262147, 1, 0, 327684, 1, 0, 262144, 1, 0, 262145, 1, 0, 327682, 1, 0, 1, 0, 0, 3, 0, 0, 5, 0, 0, 327680, 1, 0)
+script = ExtResource("4_jfn5d")

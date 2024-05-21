@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://bd4w1wfj1evf4"]
+
+[ext_resource type="Texture2D" uid="uid://kct876ki62re" path="res://assets/tiles/tile_0_s.png" id="1_ema0h"]
+[ext_resource type="Texture2D" uid="uid://123glfhxn4w0" path="res://assets/tiles/tile_1_s.png" id="2_y4awk"]
+[ext_resource type="Texture2D" uid="uid://byp8ge4k7kc7i" path="res://assets/tiles/tile_2_s.png" id="3_e0ekj"]
+[ext_resource type="Texture2D" uid="uid://b5m0cjaoxvh8x" path="res://assets/tiles/tile_3_s.png" id="4_2s6u6"]
+[ext_resource type="Script" path="res://scripts/TileMap_controller.gd" id="4_8x1r5"]
+[ext_resource type="PackedScene" uid="uid://b8emyytxt478w" path="res://scenes/player.tscn" id="5_b87hm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gdjrp"]
+texture = ExtResource("1_ema0h")
+0:0/size_in_atlas = Vector2i(8, 8)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_325cr"]
+texture = ExtResource("2_y4awk")
+0:0/size_in_atlas = Vector2i(8, 8)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fdowb"]
+texture = ExtResource("3_e0ekj")
+0:0/size_in_atlas = Vector2i(8, 8)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lesyb"]
+texture = ExtResource("4_2s6u6")
+0:0/size_in_atlas = Vector2i(8, 8)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_lrc00"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(122, 104)
+sources/2 = SubResource("TileSetAtlasSource_gdjrp")
+sources/3 = SubResource("TileSetAtlasSource_325cr")
+sources/4 = SubResource("TileSetAtlasSource_fdowb")
+sources/5 = SubResource("TileSetAtlasSource_lesyb")
+
+[node name="World" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_lrc00")
+format = 2
+layer_0/tile_data = PackedInt32Array(65537, 2, 0, 131073, 3, 0, 196609, 3, 0, 131074, 3, 0, 65539, 3, 0, 131075, 3, 0, 65541, 3, 0, 131077, 3, 0, 196613, 3, 0, 131078, 3, 0, 196614, 3, 0, 262150, 3, 0, 65543, 2, 0, 131079, 3, 0, 196615, 3, 0, 131080, 2, 0, 196616, 2, 0, 262152, 2, 0, 1, 2, 0, 65538, 2, 0, 3, 4, 0, 5, 2, 0, 65542, 2, 0, 7, 2, 0, 65544, 2, 0, 262145, 2, 0, 327681, 2, 0, 327682, 2, 0, 327683, 2, 0, 327685, 2, 0, 327684, 2, 0, 196610, 2, 0, 196611, 2, 0, 196612, 2, 0, 327686, 2, 0, 262151, 2, 0, 327688, 2, 0, 327687, 3, 0)
+script = ExtResource("4_8x1r5")
+
+[node name="Player" parent="." instance=ExtResource("5_b87hm")]
+position = Vector2(150, 102)
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(1, -1)
+default_color = Color(0.811761, 0.247521, 0.382382, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "World Position:"
+metadata/_edit_use_anchors_ = true
+
+[node name="WorldPositionLabel" type="Label" parent="."]
+offset_left = 126.0
+offset_right = 166.0
+offset_bottom = 23.0
+
+[node name="Label3" type="Label" parent="."]
+offset_top = 29.0
+offset_right = 40.0
+offset_bottom = 52.0
+text = "Tile Position:"
+
+[node name="TilePositionLabel" type="Label" parent="."]
+offset_left = 118.0
+offset_top = 29.0
+offset_right = 158.0
+offset_bottom = 52.0
